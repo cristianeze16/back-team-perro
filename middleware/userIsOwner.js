@@ -2,14 +2,11 @@ const { notOwnerResponse, documentNotFound } = require("../config/responses");
 
 const userIsOwner = model => [
   async (req, res, next) => {
-    let document = await model.findOne({ _id: req.params.id });
+    let document = await model.findOne({ _id: req.params.id, userId: req.user.id });
     if (document) {
-      if (document.userId.equals(req.user.id)) {
-        return next();
-      }
-      return notOwnerResponse(req, res);
+      return next();
     }
-    return documentNotFound(req, res);
+    return notOwnerResponse(req, res);
   },
 ];
 

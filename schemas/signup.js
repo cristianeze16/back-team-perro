@@ -7,9 +7,9 @@ const schemaSignUp = joi.object({
     "string.base": "The field 'name' must be a string",
   }),
   lastName: joi.string().required().messages({
-    "any.required": "The field 'lastName' is required, please enter it",
-    "string.empty": "The field 'lastName' mustn't be empty, please fill it",
-    "string.base": "The field 'lastName' must be a string",
+    "any.required": "The field 'last name' is required, please enter it",
+    "string.empty": "The field 'last name' mustn't be empty, please fill it",
+    "string.base": "The field 'last name' must be a string",
   }),
 
   role: joi.string().valid("user", "admin").required().messages({

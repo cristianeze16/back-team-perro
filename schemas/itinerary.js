@@ -29,7 +29,7 @@ const ItinerarySchema = joi.object({
     "string.base": "The field 'description' must be a string",
   }),
   cityId: joi.any().required().messages({
-    "any.required": "The field 'userId' is required, please enter it",
+    "any.required": "The field 'city' is required, please enter it",
   }),
 });
 

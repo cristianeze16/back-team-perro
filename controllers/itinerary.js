@@ -56,7 +56,20 @@ const controller = {
         errorMessage(res, 400, error.message);
       }
     } else {
-      errorMessage(res, 404, "Please specify the cityId or userId");
+      try {
+        let allItineraries = await Itinerary.find({}, "-userId");
+        if (allItineraries.length) {
+          res.status(200).json({
+            response: allItineraries,
+            success: true,
+            message: "All itineraries",
+          });
+        } else {
+          errorMessage(res, 404, "Couldn't find itineraries");
+        }
+      }catch(error) {
+        errorMessage(res,400, error.message );
+      };
     }
   },
   update: async (req, res) => {
